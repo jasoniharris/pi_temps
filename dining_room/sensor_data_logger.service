@@ -5,7 +5,8 @@ After=influxdb.service
 [Service]
 Type=simple
 User=pi
-ExecStart=/usr/bin/python3 /home/pi/pi_temps/sensor_data_logger.py
+WorkingDirectory= /home/pi/pi_temps/dining_room/
+ExecStart=/usr/bin/python3 /home/pi/pi_temps/dining_room/sensor_data_logger.py
 Restart=always
 
 [Install]
