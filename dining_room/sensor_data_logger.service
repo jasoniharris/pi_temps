@@ -1,0 +1,12 @@
+[Unit]
+Description=DHT22 Poller Dining Room
+After=influxdb.service
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/pi_temps/sensor_data_logger.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

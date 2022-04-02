@@ -1,0 +1,10 @@
+{
+    "measurement" : "rpi-dht22",
+    "location" : "dining_room",
+    "host" : "localhost",
+    "port" : "8086",
+    "dbname" : "sensor_data",
+    "user" : "rpi",
+    "password" : "rpi",
+    "interval" : 30
+}

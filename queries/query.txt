@@ -1,0 +1,4 @@
+SELECT "temperature" FROM "rpi-dht22" WHERE $timeFilter
+SELECT "humidity" FROM "rpi-dht22" WHERE $timeFilter
+
+SELECT "temperature" FROM "openweathermap" WHERE $timeFilter
