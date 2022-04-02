@@ -28,13 +28,15 @@ content_type = str('text/plain; version=0.0.4; charset=utf-8')
 def get_outside_weather():
     response = requests.get(baseurl, params=params)
     temp = response.json()['main']['temp']
-    return temp
+    humidity = response.json()['main']['humidity']
+
+    return [temp, humidity]
 
 while True:
     try:
         outside_temp = get_outside_weather()
         iso = time.ctime()
-        print("[%s] Outside: %s" % (iso, outside_temp))
+        print("[%s] Outside Temp: %s, Outside Humidity: %s" % (iso, outside_temp[0], outside_temp[1]))
 
         data = [
         {
@@ -43,7 +45,8 @@ while True:
                   "location": location,
               },
               "fields": {
-                  "temperature" : outside_temp
+                  "temperature" : outside_temp[0],
+                  "humidity" : outside_temp[1]
               }
           }
         ]
