@@ -5,10 +5,10 @@ import requests
 from influxdb import InfluxDBClient
 import json
 
+
 with open('config.json') as config_file:
     data = json.load(config_file)
 
-appid = data['appid']
 measurement = data['measurement']
 location = data['location']
 host = data['host']
@@ -17,6 +17,7 @@ user = data['user']
 password = data['password']
 dbname = data['dbname']
 interval = data['interval']
+appid = data['appid']
 
 # Create the InfluxDB client object
 client = InfluxDBClient(host, port, user, password, dbname)
