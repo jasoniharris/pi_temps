@@ -3,6 +3,9 @@
 sudo cp inside/*.service /etc/systemd/system/
 sudo cp outside/*.service /etc/systemd/system/
 
+aws s3 cp s3://harris-pi-temps/outside_config.json outside/
+aws s3 cp s3://harris-pi-temps/inside_config.json inside/
+
 sudo systemctl daemon-reload
 
 systemctl restart sensor_data_logger

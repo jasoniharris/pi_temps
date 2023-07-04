@@ -7,7 +7,7 @@ from influxdb import InfluxDBClient
 import requests
 import json
 
-with open('config.json') as config_file:
+with open('inside_config.json') as config_file:
     data = json.load(config_file)
 
 measurement = data['measurement']
