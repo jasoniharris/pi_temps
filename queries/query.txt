@@ -2,3 +2,9 @@ SELECT "temperature" FROM "rpi-dht22" WHERE $timeFilter
 SELECT "humidity" FROM "rpi-dht22" WHERE $timeFilter
 
 SELECT "temperature" FROM "openweathermap" WHERE $timeFilter
+
+
+Get MEAN temp for 10mins 
+If greater than 21, alert
+
+SELECT MEAN("temperature") FROM "rpi-dht22" GROUP BY time(10m) fill(none) ORDER BY DESC LIMIT 1

@@ -1,5 +1,6 @@
 import time
 import sys
+import os
 import datetime
 import board
 import adafruit_dht
@@ -30,7 +31,7 @@ while True:
         humidity = dhtDevice.humidity
         iso = time.ctime()
         # Print for debugging, uncomment the below line
-        print("[%s] Temp: %s, Humidity: %s" % (iso, temperature_c, humidity))
+        # print("[%s] Temp: %s, Humidity: %s" % (iso, temperature_c, humidity))
 
         data = [
         {
@@ -46,7 +47,11 @@ while True:
         ]
 
         # Send the JSON data to InfluxDB
-        client.write_points(data)
+        client.write_points(data)  
+        
+        # Set environemnt variable of temp reading
+        os.environ["NURSERY_TEMP"] = temperature_c
+
 
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
