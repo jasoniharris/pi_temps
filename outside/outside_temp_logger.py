@@ -1,10 +1,7 @@
 import time
-import sys
-import datetime
 import requests
 from influxdb import InfluxDBClient
 import json
-
 
 with open('outside_config.json') as config_file:
     data = json.load(config_file)
@@ -54,11 +51,13 @@ while True:
         # Send the JSON data to InfluxDB
         client.write_points(data)
 
+
     except RuntimeError as error:
         # print(error.args[0])
         time.sleep(10.0)
         continue
     except Exception as error:
         raise error
+    else:
+        break
 
-    time.sleep(interval)
