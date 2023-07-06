@@ -17,6 +17,8 @@ password = data['password']
 dbname = data['dbname']
 interval = data['interval']
 alerting_enabled = data['alerting_enabled']
+temp_low = data['temp_low']
+temp_high = data['temp_high']
 
 client = InfluxDBClient(host, port, user, password, dbname)
 
@@ -63,7 +65,8 @@ while True:
 
         # Publish alert
         if alerting_enabled:
-            if not 18 <= temperature_c <= 25:
+            if not temp_low <= temperature_c <= temp_high:
+                # print("temp out of bounds")
                 publish_alert()
 
     except RuntimeError as error:
