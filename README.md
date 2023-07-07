@@ -2,7 +2,7 @@
 
 ### Design
 
-[High Level Design](Nursery.drawio)
+![High Level Design](Nursery.drawio.png)
 
 Solution to record temperature and humidity readings, inside and outside the home. Using a Raspberry PI and DHT22 moduel.
 
