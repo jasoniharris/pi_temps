@@ -19,6 +19,7 @@ interval = data['interval']
 alerting_enabled = data['alerting_enabled']
 temp_low = data['temp_low']
 temp_high = data['temp_high']
+sns_topic_arn = data['sns_topic_arn']
 
 client = InfluxDBClient(host, port, user, password, dbname)
 
@@ -31,7 +32,7 @@ def publish_alert ():
                         )
         message = f"Temperature is: {temperature_c}"
         sns.publish(
-            TargetArn='arn:aws:sns:eu-west-2:728887003700:nursery-temperature',
+            TargetArn=sns_topic_arn,
             Message=json.dumps({'default': json.dumps(message)}),
             MessageStructure='json'
         )
@@ -66,7 +67,7 @@ while True:
         # Publish alert
         if alerting_enabled:
             if not temp_low <= temperature_c <= temp_high:
-                # print("temp out of bounds")
+                print("temp out of bounds")
                 publish_alert()
 
     except RuntimeError as error:
