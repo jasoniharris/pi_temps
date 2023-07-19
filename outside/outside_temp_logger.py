@@ -15,11 +15,13 @@ password = data['password']
 dbname = data['dbname']
 interval = data['interval']
 appid = data['appid']
+lat = data['lat']
+lon = data['lon']
 
 # Create the InfluxDB client object
 client = InfluxDBClient(host, port, user, password, dbname)
 
-params = {"lat": "52.840056", "lon": "-2.471194", "units": "metric", "appid": appid}
+params = {"lat": lat, "lon": lon, "units": "metric", "appid": appid}
 baseurl = "https://api.openweathermap.org/data/2.5/weather"
 content_type = str('text/plain; version=0.0.4; charset=utf-8')
 
